@@ -1,0 +1,28 @@
+.display{
+
+    display: grid;
+    grid-template-columns:150px 150px 150px 150px;
+    grid-row-gap: 30px;
+    justify-content: space-around;
+}
+.img{
+    width: 150px;
+    height: 230px;
+    transition: 1s
+}
+.img:hover{
+    transform: scale(1.1)
+}
+.selectedPage{
+    font-weight: bold;
+    color: red;
+}
+.h1{
+    color: red;
+}
+.some{
+    width: 500px;
+}
+.index{
+    margin-bottom: 30px;
+}
