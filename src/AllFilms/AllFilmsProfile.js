@@ -6,20 +6,18 @@ import {filmsAPI} from "../api/Api";
 import Preloader from "../preloader/Preloader";
 import {detailsType, setDetails, setIsFetching} from "../redux/allFilms-reducer";
 import {getDetails, getIsFetching} from "../redux/allFilms-selected";
-import { AppStateType } from "../redux/store";
 
-type PropsType={
-    posterUrlPreview:string
-}
 
-const AllFilmsProfile:React.FC<PropsType> = ()=>{
+
+
+const AllFilmsProfile = ()=>{
     const {films,serials} = useParams();
-    const details = useSelector(getDetails);
+    const details = useSelector (getDetails);
     const dispatch = useDispatch();
     const isFetching = useSelector(getIsFetching)
     useEffect(()=>{
 dispatch(setIsFetching(true))
-     filmsAPI.getDetailsFilms(!films ? serials : films).then(data => {
+     filmsAPI.getDetailsFilms (!films ? serials : films).then(data => {
             dispatch(setIsFetching(false))
             dispatch(setDetails(data))
         })

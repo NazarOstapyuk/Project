@@ -1,0 +1,20 @@
+.main{
+
+    display: grid;
+    background: #323232;
+    grid-area: n;
+}
+.positin{
+    margin: 0 auto;
+}
+.img{
+    margin: 50px 0;
+    width: 150px;
+}
+.text{
+
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: bold;
+}

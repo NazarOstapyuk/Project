@@ -1,16 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect,FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import styleFilms from "./allFilms.module.css";
 
 
 import {getAllFilms, getCurrentPage, getIsFetching, getTotalCount, getTotalPages} from "../redux/allFilms-selected";
-import {setAllFilms, setCurrentPages, setIsFetching, setTotalCount} from "../redux/allFilms-reducer";
+import {allFilmsType, setAllFilms, setCurrentPages, setIsFetching, setTotalCount} from "../redux/allFilms-reducer";
 import Preloader from "../preloader/Preloader";
 import Pagination from "../Pagination/Pagination";
 import { filmsAPI } from "../api/Api";
-
-
 
 
 const AllFilms = ()=> {
@@ -36,7 +34,7 @@ const AllFilms = ()=> {
     }, [path])
 
 
-    const onPageChanged = (pageNumber)=>{
+    const onPageChanged = (pageNumber:number)=>{
         dispatch(setIsFetching(true))
         dispatch(setCurrentPages(pageNumber));
         filmsAPI.getPaginatorFilms(path,pageNumber).then(data => {
@@ -48,6 +46,7 @@ const AllFilms = ()=> {
         return <Preloader/>
     }
 
+
     return (
         <div>
             <div>
@@ -55,7 +54,7 @@ const AllFilms = ()=> {
                             onPageChanged={onPageChanged} />
             </div>
             <div className={styleFilms.display}>
-                {allFilms.map(f=>
+                {allFilms.map((f: allFilmsType )=>
                     <div key={f.kinopoiskId} >
                         <div>
 

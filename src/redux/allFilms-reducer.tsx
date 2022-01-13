@@ -6,50 +6,42 @@ const TOTAL_COUNT = 'TOTAL-COUNT';
 const IS_FETCHING = 'IS_FETCHING';
 const FILTER = 'FILTER';
 
-// type genreType ={
-//     genre:string
-// }
-// type countryType={
-//     country:string
-// }
-// type allFilmsType ={
-//     kinopoiskId:number
-//     posterUrl:string
-// }
-// type detailsType={
-//     posterUrlPreview:string
-//     nameOriginal?:string|null
-//     nameRu?:string
-//     description:string
-//     genres:genreType
-//     year:number
-//     countries:countryType
-//
-// }
-// let initialState = {
-//     filter:[] as Array<allFilmsType>,
-//     allFilms:[] as Array<allFilmsType>,
-//     details:[] as Array<detailsType>,
-//     totalPages:20,
-//     totalCount: 0,
-//     currentPage: 1,
-//     isFetching: false,
-// }
-let initialState = {
-    filter:[] ,
-    allFilms:[] ,
-    details:[] ,
+export  type genreType ={
+    genre:string
+}
+export type countryType={
+    country:string
+}
+export  type allFilmsType ={
+    kinopoiskId:number
+    posterUrl:string
+}
+export  type detailsType={
+    posterUrlPreview:string
+    nameOriginal?:string
+    nameRu?:string
+    description:string
+    year:number
+    genres:genreType
+    countries:countryType
+
+}
+
+ export let initialState = {
+    filter:[] as Array<allFilmsType>,
+    allFilms:[] as Array<allFilmsType>,
+    details:[] as Array<detailsType>,
     totalPages:20,
     totalCount: 0,
     currentPage: 1,
     isFetching: false,
 }
-// type InitialState = typeof initialState
+type InitialState = typeof initialState
 
-const allFilmsReducer=(state =initialState,action)=>{
+const allFilmsReducer=(state =initialState,action:any):InitialState=>{
     switch (action.type) {
         case SET_ALLFILMS:{
-            return{...state,allFilms:action.films}
+            return{...state,allFilms:action.films,}
         }
         case SET_DETAILS:{
             return {...state,details: action.details}
@@ -71,37 +63,37 @@ const allFilmsReducer=(state =initialState,action)=>{
             return state
     }
 }
-// type SetAllFilmsType ={
-//     type: typeof SET_ALLFILMS,
-//     films:Array<SetAllFilmsType>
-// }
-export  const setAllFilms = (films) =>({type:SET_ALLFILMS,films})
-// type SetDetailsType ={
-//     type: typeof SET_DETAILS,
-//     details:Array<SetDetailsType>
-// }
-export  const setDetails = (details) =>({type:SET_DETAILS,details})
-//
-// type SetCurrentPagesType ={
-//     type: typeof SET_CURRENT_PAGE,
-//     currentPage:number
-// }
-export const setCurrentPages =(currentPage)=>({type:SET_CURRENT_PAGE,currentPage})
-// type SetTotalCountType ={
-//     type: typeof TOTAL_COUNT,
-//     totalCount:number
-// }
-export const setTotalCount = (totalCount) =>({type:TOTAL_COUNT,totalCount})
-// type SetIsFetchingType ={
-//     type: typeof IS_FETCHING,
-//     isFetching:boolean
-// }
-export const setIsFetching = (isFetching)=>({type:IS_FETCHING, isFetching})
-// type SetFilterType ={
-//     type: typeof FILTER,
-//     term:Array<SetAllFilmsType>
-// }
-export const setFilter = (term)=>({type:FILTER,term})
+type SetAllFilmsType ={
+    type: typeof SET_ALLFILMS,
+    films:Array<SetAllFilmsType>
+}
+export  const setAllFilms = (films:Array<SetAllFilmsType>):SetAllFilmsType =>({type:SET_ALLFILMS,films})
+type SetDetailsType ={
+    type: typeof SET_DETAILS,
+    details:Array<SetDetailsType>
+}
+export  const setDetails = (details:Array<SetDetailsType>):SetDetailsType =>({type:SET_DETAILS,details})
+
+type SetCurrentPagesType ={
+    type: typeof SET_CURRENT_PAGE,
+    currentPage:number
+}
+export const setCurrentPages =(currentPage:number):SetCurrentPagesType=>({type:SET_CURRENT_PAGE,currentPage})
+type SetTotalCountType ={
+    type: typeof TOTAL_COUNT,
+    totalCount:number
+}
+export const setTotalCount = (totalCount:number):SetTotalCountType=>({type:TOTAL_COUNT,totalCount})
+type SetIsFetchingType ={
+    type: typeof IS_FETCHING,
+    isFetching:boolean
+}
+export const setIsFetching = (isFetching:boolean):SetIsFetchingType=>({type:IS_FETCHING, isFetching})
+type SetFilterType ={
+    type: typeof FILTER,
+    term:Array<SetAllFilmsType>
+}
+export const setFilter = (term:Array<SetAllFilmsType>):SetFilterType=>({type:FILTER,term})
 
 
 

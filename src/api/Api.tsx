@@ -10,16 +10,16 @@ const instance = axios.create({
 })
 
 export const filmsAPI = {
-    getFilms(path){
+    getFilms(path:string){
         return instance.get(`v2.2/films/?type=${path}`).then(res=>res.data)
     },
-    getPaginatorFilms(path,pageNumber){
+    getPaginatorFilms(path:string,pageNumber:number){
         return instance.get(`v2.2/films/?type=${path}&page=${pageNumber}`).then(res=>res.data)
     },
-    getDetailsFilms(params){
+    getDetailsFilms(params:string){
         return instance.get(`v2.2/films/${params}`).then(res=>res.data)
     },
-    getFilterFilms(searchTerm){
+    getFilterFilms(searchTerm:string){
         return instance.get(`v2.1/films/search-by-keyword?keyword=${searchTerm}&page=1`)
     }
 }

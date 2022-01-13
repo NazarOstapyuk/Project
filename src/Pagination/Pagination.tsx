@@ -1,11 +1,17 @@
-import React from "react";
+import React,{FC} from "react";
 import styleFilms from "../AllFilms/allFilmsProfile.module.css";
 import classNames from "classnames";
 
+type PropsType={
+    pageSize:number
+    totalCounter:number
+    currentPage:number
+    onPageChanged: (p:number)=>void
+}
 
-const Pagination= ({pageSize,totalCounter ,currentPage,onPageChanged})=>{
+const Pagination:FC<PropsType>= ({pageSize,totalCounter ,currentPage,onPageChanged})=>{
     let totalCount = Math.ceil(totalCounter/pageSize) ;
-    let page = [];
+    let page= [];
     for (let i = 1; i <= totalCount; i++){
         page.push(i)
     }
