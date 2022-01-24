@@ -8,10 +8,16 @@
 .img{
     width: 150px;
     height: 230px;
-    transition: 1s
+
+    position: relative;
 }
-.img:hover{
-    transform: scale(1.1)
+.hover{
+    transition: 0.5s;
+}
+.hover:hover{
+
+    opacity: 0.3;
+
 }
 .selectedPage{
     font-weight: bold;
@@ -25,4 +31,55 @@
 }
 .index{
     margin-bottom: 30px;
+}
+.raiting{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    z-index: 1000;
+    border-radius: 50%;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.orange{
+    background-color: orange;
+}
+
+.red {
+    background-color: red;
+}
+.green{
+    background-color: green;
+}
+
+.paginator{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+.button{
+    display: inline-block;
+    color: green;
+    margin-left: 8px;
+    background-color: rgb(218, 0, 35);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-indent: -9999px;
+    overflow: hidden;
+    transition: 1s;
+    cursor: pointer;
+}
+.button:hover{
+    background-color: white;
+}
+.selectedPage{
+    background-color: white;
+
 }

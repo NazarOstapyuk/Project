@@ -15,8 +15,8 @@ const App = ()=>{
                 <Routes>
                     <Route path ='FILM' element={<AllFilms/>}/>
                     <Route path ='TV_SHOW' element={<AllFilms/>}/>
-                    <Route path ='FILM/:films' element={<AllFilmsProfile/>}/>
-                    <Route path ='TV_SHOW/:serials' element={<AllFilmsProfile/>}/>
+                    <Route path ='FILM/:id' element={<AllFilmsProfile/>}/>
+                    <Route path ='TV_SHOW/:id' element={<AllFilmsProfile/>}/>
                     <Route path ='/filter' element={<SearchType/>}/>
                 </Routes>
             </div>

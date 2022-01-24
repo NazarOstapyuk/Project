@@ -1,18 +1,17 @@
-
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styleFilms from "../AllFilms/allFilms.module.css";
 import { filmsAPI } from "../api/Api";
 import Preloader from "../preloader/Preloader";
-import {setFilter, setIsFetching} from "../redux/allFilms-reducer";
+import {allFilmsType, setFilter, setIsFetching} from "../redux/allFilms-reducer";
 import {getFilter, getIsFetching} from "../redux/allFilms-selected";
 
 
 
 
 
-export const SearchNorm = (props)=>{
+export const SearchNorm = (props:any)=>{
     const [tempSearch,setTempSearch] = useState('')
 
     useEffect(()=>{
@@ -55,9 +54,9 @@ function SearchType() {
     }
     return (
         <div>
-            <SearchNorm value={searchTerm} onSubmit={(value)=>{setSearchTerm(value)}}/>
+            <SearchNorm value={searchTerm} onSubmit={(value:string)=>{setSearchTerm(value)}}/>
             <div className={styleFilms.display}>
-                {filter.map(f=>
+                {filter.map((f:allFilmsType)=>
                     <div key={f.filmId} >
                         <div>
                             <Link to={`/TV_SHOW/${f.filmId}`}>

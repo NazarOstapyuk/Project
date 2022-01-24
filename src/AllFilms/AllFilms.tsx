@@ -5,10 +5,19 @@ import styleFilms from "./allFilms.module.css";
 
 
 import {getAllFilms, getCurrentPage, getIsFetching, getTotalCount, getTotalPages} from "../redux/allFilms-selected";
-import {allFilmsType, setAllFilms, setCurrentPages, setIsFetching, setTotalCount} from "../redux/allFilms-reducer";
+import {
+    allFilmsType,
+    setAllFilms,
+    setCurrentPages,
+    setIsFetching,
+    setTotalCount,
+    thunkAllFilms
+} from "../redux/allFilms-reducer";
 import Preloader from "../preloader/Preloader";
 import Pagination from "../Pagination/Pagination";
 import { filmsAPI } from "../api/Api";
+import classNames from "classnames";
+
 
 
 const AllFilms = ()=> {
@@ -19,19 +28,14 @@ const AllFilms = ()=> {
     const totalCount = useSelector(getTotalCount)
     const isFetching = useSelector(getIsFetching)
     const dispatch = useDispatch()
-    const filmsPath = 'TV_SHOW';
-    const serialPath = 'FILM';
-    const  path = url.pathname === '/FILM' ? serialPath : filmsPath
+    const filmsPath = 'FILM';
+    const serialPath = 'TV_SHOW';
+    const  path = url.pathname === '/FILM' ?  filmsPath: serialPath
 
     useEffect(() => {
-        dispatch(setIsFetching(true))
-        filmsAPI.getFilms(path).then(data => {
-            dispatch(setIsFetching(false))
-            dispatch(setAllFilms(data.items))
-            dispatch(setTotalCount(data.total))
+      dispatch(thunkAllFilms(path))
 
-        })
-    }, [path])
+        },[path])
 
 
     const onPageChanged = (pageNumber:number)=>{
@@ -46,7 +50,6 @@ const AllFilms = ()=> {
         return <Preloader/>
     }
 
-
     return (
         <div>
             <div>
@@ -55,9 +58,12 @@ const AllFilms = ()=> {
             </div>
             <div className={styleFilms.display}>
                 {allFilms.map((f: allFilmsType )=>
-                    <div key={f.kinopoiskId} >
-                        <div>
-
+                    <div key={f.filmId} >
+                        <div className={styleFilms.hover}>
+                            <div className={classNames({[styleFilms.green]:f.ratingKinopoisk >=9,[styleFilms.orange]:f.ratingKinopoisk >5,
+                                [styleFilms.red]:f.ratingKinopoisk <=4 },styleFilms.raiting)}>
+                           <span>{ f.ratingKinopoisk}</span>
+                            </div>
                             <Link to={`/${path}/${f.kinopoiskId}`} >
                                 <img  src={f.posterUrl} alt="" className={styleFilms.img} />
                             </Link>

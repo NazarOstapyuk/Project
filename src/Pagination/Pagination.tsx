@@ -1,5 +1,5 @@
 import React,{FC} from "react";
-import styleFilms from "../AllFilms/allFilmsProfile.module.css";
+import styleFilms from "../AllFilms/allFilms.module.css";
 import classNames from "classnames";
 
 type PropsType={

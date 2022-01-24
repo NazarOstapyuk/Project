@@ -16,10 +16,21 @@ export const filmsAPI = {
     getPaginatorFilms(path:string,pageNumber:number){
         return instance.get(`v2.2/films/?type=${path}&page=${pageNumber}`).then(res=>res.data)
     },
-    getDetailsFilms(params:string){
-        return instance.get(`v2.2/films/${params}`).then(res=>res.data)
+    getDetailsFilms(id:number){
+        return instance.get(`v2.2/films/${id}`).then(res=>res.data)
     },
     getFilterFilms(searchTerm:string){
         return instance.get(`v2.1/films/search-by-keyword?keyword=${searchTerm}&page=1`)
-    }
+    },
+
+
+}
+export const descriptionAPI={
+    getSimilars(id:any){
+        return instance.get(`v2.2/films/${id}/similars`)
+    },
+    getBoxOffice(id:number){
+        return instance.get(`v2.2/films/${id}/box_office`)
+    },
+
 }
