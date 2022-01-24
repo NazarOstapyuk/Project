@@ -26,7 +26,7 @@ export const filmsAPI = {
 
 }
 export const descriptionAPI={
-    getSimilars(id:any){
+    getSimilars(id:number){
         return instance.get(`v2.2/films/${id}/similars`)
     },
     getBoxOffice(id:number){
