@@ -1,5 +1,6 @@
 import {filmsAPI} from "../api/Api";
 import {Dispatch} from "redux";
+import {FC} from "react";
 
 const SET_ALLFILMS = 'SET-ALLFILMS';
 const SET_DETAILS = 'SET-DETAILS';
@@ -16,25 +17,27 @@ export type countryType={
 export  type allFilmsType ={
     kinopoiskId?:number
     posterUrl?:string
-
+    filmId:number
     ratingImdb?:number
-    ratingKinopoisk?:number
+    ratingKinopoisk:number
 }
 export  type detailsType={
     posterUrlPreview:string
     nameOriginal?:string
-    nameRu?:string
+    nameRu:string
     description:string
     year:number
+    filmLength:number
     genres:genreType
     countries:countryType
-
 }
+
+
 
  export let initialState = {
     filter:[] as Array<allFilmsType>,
     allFilms:[] as Array<allFilmsType>,
-    details:[] as Array<detailsType>,
+    details:[] as any,
     totalPages:20,
     totalCount: 0,
     currentPage: 1,
@@ -121,7 +124,7 @@ export const thunkAllFilms =(path:string)=>(dispatch:Dispatch<ActionsType>)=>{
     })
 }
 
-export const thunkDetails =(id:number)=>(dispatch:Dispatch<ActionsType>)=>{
+export const thunkDetails =(id:any)=>(dispatch:Dispatch<ActionsType>)=>{
     dispatch(setIsFetching(true))
     filmsAPI.getDetailsFilms (id).then(data => {
         dispatch(setIsFetching(false))

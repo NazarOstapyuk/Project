@@ -4,19 +4,21 @@ const SET_BOX_OFFICE = 'SET-BOX-OFFICE'
 const SIMILARS = 'SIMILARS'
 
 export type boxOfficeType={
-    type:string |any
+    type:string
     amount:number
 }
-export type similarsType={
+export  type similarsType={
     filmId:number
     posterUrlPreview:string
 }
 
 
 
+
+
 export let initialState = {
     boxOffice:[] as Array<boxOfficeType>,
-    similars:[] as Array<similarsType>,
+    similars:[] as any,
 
 
 }
@@ -44,7 +46,7 @@ type SetFactsType={
 }
 export const setBoxOffice =(money:Array<boxOfficeType>):SetFactsType=>({type:SET_BOX_OFFICE,money})
 
-export const thunkBoxOffice =(id:number)=>(dispatch:Dispatch<ActionType>)=>{
+export const thunkBoxOffice =(id:any)=>(dispatch:Dispatch<ActionType>)=>{
 descriptionAPI.getBoxOffice(id).then(data=>{
     dispatch(setBoxOffice(data.data.items))
 })}

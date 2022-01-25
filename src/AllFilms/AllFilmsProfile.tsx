@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React, {FC, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styleProfile from './allFilmsProfile.module.css'
 import Preloader from "../preloader/Preloader";
-import { thunkDetails } from "../redux/allFilms-reducer";
+import {countryType, genreType, thunkDetails} from "../redux/allFilms-reducer";
 import {getDetails, getIsFetching} from "../redux/allFilms-selected";
-import { Description } from "../description/Description";
+
 
 import { BoxOffice } from "../description/BoxOffice/BoxOffice";
+import {Similars} from "../description/similars/similars";
 
 
 
@@ -58,7 +59,7 @@ const AllFilmsProfile = ()=>{
                             </tr>
                             <tr>
                                 <td>жанр:</td>
-                                <td >{details && details.genres && details.genres.map(genre=> {
+                                <td >{details && details.genres && details.genres.map((genre:genreType)=> {
                                     return  <span  className={styleProfile.td} >{genre.genre}</span>
                                 })}</td>
                             </tr>
@@ -70,7 +71,7 @@ const AllFilmsProfile = ()=>{
                             <tr >
                                 <td className={styleProfile.i}>Страна: </td>
                                 <td>
-                                    {details && details.countries && details.countries.map(country=> {
+                                    {details && details.countries && details.countries.map((country:countryType)=> {
                                             return <span key={details.filmId} >{country.country}</span>
                                         }
                                     )}
@@ -94,7 +95,7 @@ const AllFilmsProfile = ()=>{
                        <p className={styleProfile.description}>{details.description}</p>
                    </div>
                 </div>
-                <Description/>
+                <Similars/>
             </div>
         </div>
     )
