@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
+import {allFilmsType} from "../redux/allFilms-reducer";
 
 
 const instance = axios.create({

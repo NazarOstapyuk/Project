@@ -16,9 +16,10 @@ export type countryType={
 export  type allFilmsType ={
     kinopoiskId?:number
     posterUrl?:string
-    filmId?:number
-    ratingImdb:number
-    ratingKinopoisk?:any}
+
+    ratingImdb?:number
+    ratingKinopoisk?:number
+}
 export  type detailsType={
     posterUrlPreview:string
     nameOriginal?:string
