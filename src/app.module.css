@@ -1,19 +1,5 @@
-.wrapper{
 
-  margin: 0 auto;
-  display: grid;
-  max-width: 1440px;
-  grid-template-areas:
-          'n c'
-;
-  grid-template-columns: 220px 1fr;
-
-
-}
 .wrapperContent{
-  color: white;
-  grid-area: c;
-  grid-template-columns: 1fr 1fr 1fr;
-
-  background: #222222;
+  max-width: 1200px;
+  margin: 0 auto;
 }

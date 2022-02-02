@@ -8,9 +8,7 @@ import {getAllFilms, getCurrentPage, getIsFetching, getTotalCount, getTotalPages
 import {
     allFilmsType,
     setAllFilms,
-    setCurrentPages,
-    setIsFetching,
-    setTotalCount,
+    setCurrentPages, setIsFetching,
     thunkAllFilms
 } from "../redux/allFilms-reducer";
 import Preloader from "../preloader/Preloader";
@@ -28,21 +26,19 @@ const AllFilms = ()=> {
     const totalCount = useSelector(getTotalCount)
     const isFetching = useSelector(getIsFetching)
     const dispatch = useDispatch()
-    const filmsPath = 'FILM';
-    const serialPath = 'TV_SHOW';
-    const  path = url.pathname === '/FILM' ?  filmsPath: serialPath
+    const filmsPath = 'film';
+    const serialPath = 'tv_show';
+
+    const  path = url.pathname === '/film' ?  filmsPath: serialPath
 
     useEffect(() => {
       dispatch(thunkAllFilms(path))
-
         },[path])
 
-
     const onPageChanged = (pageNumber:number)=>{
-        dispatch(setIsFetching(true))
+
         dispatch(setCurrentPages(pageNumber));
         filmsAPI.getPaginatorFilms(path,pageNumber).then(data => {
-            dispatch(setIsFetching(false))
             dispatch(setAllFilms(data.items))
         })
     };
@@ -53,8 +49,8 @@ const AllFilms = ()=> {
     return (
         <div>
             <div>
-                <Pagination currentPage={currentPage} pageSize={totalPages} totalCounter={totalCount}
-                            onPageChanged={onPageChanged} />
+                <Pagination  currentPage={currentPage} pageSize={totalPages} totalCounter={totalCount}
+                            onPageChanged={onPageChanged} portionSize = '10'/>
             </div>
             <div className={styleFilms.display}>
                 {allFilms.map((f: allFilmsType )=>

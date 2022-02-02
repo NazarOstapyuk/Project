@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
+import {Search} from '../filter/Search';
 import hdrezka from '../image/Sgdo_u2j.png'
 import styleNavbar from './navbar.module.css'
 
@@ -8,13 +9,18 @@ const Navbar = ()=>{
         <nav className={styleNavbar.main}>
             <div className={styleNavbar.positin}>
                 <div>
-                    <NavLink to ='/filter'><img src={hdrezka} alt="" className={styleNavbar.img}/></NavLink>
+                    <img src={hdrezka} alt="" className={styleNavbar.img}/>
                 </div>
+
                 <div >
-                    <NavLink to ='/FILM' className={styleNavbar.text}>Films</NavLink>
+                    <NavLink to ='/film' className={styleNavbar.text}>Films</NavLink>
                 </div>
                 <div>
-                    <NavLink to ='/TV_SHOW' className={styleNavbar.text}>Series</NavLink>
+                    <NavLink to ='/tv_show' className={styleNavbar.text}>Series</NavLink>
+                </div>
+
+                <div>
+                    <Search/>
                 </div>
 
             </div>

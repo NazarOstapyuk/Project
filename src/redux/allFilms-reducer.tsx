@@ -1,7 +1,5 @@
 import {filmsAPI} from "../api/Api";
 import {Dispatch} from "redux";
-import {FC} from "react";
-
 const SET_ALLFILMS = 'SET-ALLFILMS';
 const SET_DETAILS = 'SET-DETAILS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
@@ -18,6 +16,8 @@ export  type allFilmsType ={
     kinopoiskId?:number
     posterUrl?:string
     filmId:number
+    nameOriginal?:string
+    nameRu?:string
     ratingImdb?:number
     ratingKinopoisk:number
 }
@@ -115,21 +115,52 @@ export const setFilter = (term:Array<allFilmsType>):SetFilterType=>({type:FILTER
 
 
 
-export const thunkAllFilms =(path:string)=>(dispatch:Dispatch<ActionsType>)=>{
+// export const thunkAllFilms =(path:string)=>(dispatch:Dispatch<ActionsType>)=>{
+//     dispatch(setIsFetching(true))
+//     filmsAPI.getFilms(path).then(data=>{
+//         dispatch(setIsFetching(false))
+//         dispatch(setAllFilms(data.items))
+//         dispatch(setTotalCount(data.total))
+//     })
+// }
+
+export const thunkAllFilms =(path:string)=> async (dispatch:Dispatch<ActionsType>)=>{
     dispatch(setIsFetching(true))
-    filmsAPI.getFilms(path).then(data=>{
+    try {
+        const res = await filmsAPI.getFilms(path);
+        const filmsUrl = res
+        dispatch(setAllFilms(filmsUrl.items))
+        dispatch(setTotalCount(filmsUrl.total))
+
         dispatch(setIsFetching(false))
-        dispatch(setAllFilms(data.items))
-        dispatch(setTotalCount(data.total))
-    })
+    }
+    catch (e) {
+        console.log(e)
+    }
+
 }
 
-export const thunkDetails =(id:any)=>(dispatch:Dispatch<ActionsType>)=>{
+
+// export const thunkDetails =(id:any)=>(dispatch:Dispatch<ActionsType>)=>{
+//     dispatch(setIsFetching(true))
+//     filmsAPI.getDetailsFilms (id).then(data => {
+//         dispatch(setIsFetching(false))
+//         dispatch(setDetails(data))
+//     })}
+
+
+export const thunkDetails =(id:any)=>async (dispatch:Dispatch<ActionsType>)=> {
     dispatch(setIsFetching(true))
-    filmsAPI.getDetailsFilms (id).then(data => {
+    try {
+        const res = await filmsAPI.getDetailsFilms(id)
+        const detailsUrl = res
         dispatch(setIsFetching(false))
-        dispatch(setDetails(data))
-    })}
+        dispatch(setDetails(detailsUrl))
+        dispatch(setIsFetching(false))
+    }
+    catch (e) {
+        console.log(e)
+    }
 
-
+}
 export default allFilmsReducer

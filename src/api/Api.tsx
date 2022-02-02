@@ -3,11 +3,14 @@ import {allFilmsType} from "../redux/allFilms-reducer";
 
 
 const instance = axios.create({
+
     headers: {
         'X-API-KEY': '4e66236d-ad1c-42bd-91ca-9da213f544f7',
         'Content-Type': 'application/json',
+
     },
-    baseURL:'https://kinopoiskapiunofficial.tech/api/'
+    baseURL:'https://kinopoiskapiunofficial.tech/api/',
+
 })
 
 export const filmsAPI = {
@@ -33,5 +36,6 @@ export const descriptionAPI={
     getBoxOffice(id:number){
         return instance.get(`v2.2/films/${id}/box_office`)
     },
+
 
 }

@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from "react";
+import React, { useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styleProfile from './allFilmsProfile.module.css'
@@ -9,6 +9,7 @@ import {getDetails, getIsFetching} from "../redux/allFilms-selected";
 
 import { BoxOffice } from "../description/BoxOffice/BoxOffice";
 import {Similars} from "../description/similars/similars";
+
 
 
 
@@ -72,7 +73,7 @@ const AllFilmsProfile = ()=>{
                                 <td className={styleProfile.i}>Страна: </td>
                                 <td>
                                     {details && details.countries && details.countries.map((country:countryType)=> {
-                                            return <span key={details.filmId} >{country.country}</span>
+                                            return <span key={details.filmId} className={styleProfile.td}>{country.country}</span>
                                         }
                                     )}
                                 </td>
@@ -89,13 +90,15 @@ const AllFilmsProfile = ()=>{
 
                 <div>
                     <div>
-                       <h2>Про що фільм "{details.nameRu !=null ? details.nameRu : details.nameOriginal}"</h2>
+
+                       <h2>{details.description ? <h2>Про що фільм { details.nameRu !=null ? details.nameRu : details.nameOriginal}</h2> : null}</h2>
                     </div>
                    <div>
                        <p className={styleProfile.description}>{details.description}</p>
                    </div>
                 </div>
                 <Similars/>
+
             </div>
         </div>
     )

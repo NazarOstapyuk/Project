@@ -3,6 +3,7 @@ import {Dispatch} from "redux";
 const SET_BOX_OFFICE = 'SET-BOX-OFFICE'
 const SIMILARS = 'SIMILARS'
 
+
 export type boxOfficeType={
     type:string
     amount:number
@@ -34,6 +35,7 @@ const descriptionReducer=(state =initialState,action:ActionType):InitialState=>{
             return {...state,similars: action.similars}
         }
 
+
         default:
             return state
     }
@@ -46,10 +48,24 @@ type SetFactsType={
 }
 export const setBoxOffice =(money:Array<boxOfficeType>):SetFactsType=>({type:SET_BOX_OFFICE,money})
 
-export const thunkBoxOffice =(id:any)=>(dispatch:Dispatch<ActionType>)=>{
-descriptionAPI.getBoxOffice(id).then(data=>{
-    dispatch(setBoxOffice(data.data.items))
-})}
+// export const thunkBoxOffice =(id:any)=>(dispatch:Dispatch<ActionType>)=>{
+// descriptionAPI.getBoxOffice(id).then(data=>{
+//     dispatch(setBoxOffice(data.data.items))
+// })}
+
+export const thunkBoxOffice =(id:any)=>async (dispatch:Dispatch<ActionType>)=>{
+
+    try {
+        const res = await descriptionAPI.getBoxOffice(id)
+        const url =res.data.items
+
+        dispatch(setBoxOffice(url))
+    }
+    catch (e) {
+        console.log(e)
+    }
+
+    }
 
 type SimilarsType={
     type: typeof SIMILARS,
@@ -57,12 +73,24 @@ type SimilarsType={
 }
 export const setSimilars =(similars:Array<similarsType>):SimilarsType=>({type:SIMILARS,similars})
 
-export const thunkSimilars =(id:any)=>(dispatch:Dispatch<ActionType>)=>{
-    descriptionAPI.getSimilars(id).then(data=>{
-        dispatch(setSimilars(data.data))
-    })
-}
+// export const thunkSimilars =(id:any)=>(dispatch:Dispatch<ActionType>)=>{
+//     descriptionAPI.getSimilars(id).then(data=>{
+//         dispatch(setSimilars(data.data))
+//     })
+// }
 
+export const thunkSimilars =(id:any)=> async (dispatch:Dispatch<ActionType>)=>{
+    try {
+        const res = await descriptionAPI.getSimilars(id)
+        const url = res.data
+        dispatch(setSimilars(url))
+    }
+    catch (e) {
+        console.log(e)
+    }
+
+
+}
 
 
 

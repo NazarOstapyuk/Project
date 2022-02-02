@@ -18,8 +18,9 @@ export const Similars = ()=>{
 
     return(
         <div >
-           <h2>Схожі фільми:</h2>
-            {similars && similars.items && similars.items.map((f:similarsType)=> {
+            {similars && similars.items && similars.items.length >=1 ? <h2>Схожі фільми:</h2> : null}
+
+            {similars && similars.items && similars.items.slice(0,5).map((f:similarsType)=> {
                 return <NavLink to={`/FILM/${f.filmId}`}>
                     <img src={f.posterUrlPreview} alt="" className={styleSimilars.img}/>
                 </NavLink>

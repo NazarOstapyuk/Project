@@ -4,20 +4,22 @@ import styleApp from './app.module.css'
 import React from "react";
 import AllFilms from "./AllFilms/AllFilms";
 import AllFilmsProfile from "./AllFilms/AllFilmsProfile";
-import SearchType from "./filter/Filter";
 import Navbar from "./Navbar/Navbar";
+
+
 
 const App = ()=>{
     return(
-        <div className={styleApp.wrapper}>
+        <div className={styleApp.container}>
+        <div className={styleApp.navbar}>
             <Navbar/>
+        </div>
             <div className={styleApp.wrapperContent}>
                 <Routes>
-                    <Route path ='FILM' element={<AllFilms/>}/>
-                    <Route path ='TV_SHOW' element={<AllFilms/>}/>
-                    <Route path ='FILM/:id' element={<AllFilmsProfile/>}/>
-                    <Route path ='TV_SHOW/:id' element={<AllFilmsProfile/>}/>
-                    <Route path ='/filter' element={<SearchType/>}/>
+                    <Route path ='film' element={<AllFilms/>}/>
+                    <Route path ='tv_show' element={<AllFilms/>}/>
+                    <Route path ='film/:id' element={<AllFilmsProfile/>}/>
+                    <Route path ='tv_show/:id' element={<AllFilmsProfile/>}/>
                 </Routes>
             </div>
         </div>

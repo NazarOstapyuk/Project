@@ -58,12 +58,16 @@
 }
 
 .paginator{
-    text-align: center;
+display: flex;
+    justify-content: center;
+    align-items: center;
+
     margin-top: 20px;
     margin-bottom: 20px;
 
 }
 .button{
+
     display: inline-block;
     color: green;
     margin-left: 8px;
@@ -77,9 +81,29 @@
     cursor: pointer;
 }
 .button:hover{
-    background-color: white;
+    background-color: orange;
 }
 .selectedPage{
-    background-color: white;
+    background-color: orange;
+
+}
+/*.prev{*/
+
+/*    background-color: rgb(218, 0, 35);*/
+/*    width: 20px;*/
+/*    height: 20px;*/
+/*    transition: 1s;*/
+/*    cursor: pointer;*/
+
+/*}*/
+
+.prev {
+    margin: 5px;
+font-size: 17px;
+    font-weight: bolder;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 50%;
 
 }

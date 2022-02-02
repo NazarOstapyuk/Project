@@ -6,3 +6,4 @@ export const getBoxOffice=(state:AppStateType)=>{
 export const getSimilars=(state:AppStateType)=>{
     return state.pageDescription.similars
 }
+

@@ -1,15 +1,20 @@
 .main{
-
-    display: grid;
     background: #323232;
-    grid-area: n;
+
+
 }
 .positin{
+
+    max-width: 1200px;
+  display: flex;
+    align-items: center;
     margin: 0 auto;
+ justify-content: space-between;
+
 }
+
 .img{
-    margin: 50px 0;
-    width: 150px;
+    width: 100px;
 }
 .text{
 
