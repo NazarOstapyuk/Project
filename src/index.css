@@ -1,4 +1,29 @@
+:root{
+/*body-background*/
+  --body-background-dark:#222222;
+  --body-background-light:white;
+  --body-background-default:var(--body-background-light);
+
+  /*components-background*/
+  --components-background-dark:#323232;;
+  --components-background-light:#7b7676;
+  --components-background-default:var(--components-background-light);
+
+  /*text*/
+  --text-color-dark: white;
+  --text-color-light: black;
+  --text-color-default: var(--text-color-light);
+
+  /*input*/
+  --input-background-dark: #323232;
+  --input-background-light: white;
+  --input-background-default: var(--input-background-light);
+
+}
+
 body {
+  color: var( --text-color-default);
+  background: var(--body-background-default);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

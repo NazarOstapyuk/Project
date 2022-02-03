@@ -9,14 +9,13 @@
 .input{
     width: 300px;
     height: 33px;
-    background-color: white;
+    background-color: var(--input-background-default);
     color: black;
    border: 1px solid white;
 }
 .container{
-
     width: 283px;
-    background-color: white;
+    background-color: var(--body-background-default);
     display: flex;
 }
 

@@ -13,10 +13,6 @@ export  type similarsType={
     posterUrlPreview:string
 }
 
-
-
-
-
 export let initialState = {
     boxOffice:[] as Array<boxOfficeType>,
     similars:[] as any,
@@ -47,12 +43,6 @@ type SetFactsType={
     money:Array<boxOfficeType>
 }
 export const setBoxOffice =(money:Array<boxOfficeType>):SetFactsType=>({type:SET_BOX_OFFICE,money})
-
-// export const thunkBoxOffice =(id:any)=>(dispatch:Dispatch<ActionType>)=>{
-// descriptionAPI.getBoxOffice(id).then(data=>{
-//     dispatch(setBoxOffice(data.data.items))
-// })}
-
 export const thunkBoxOffice =(id:any)=>async (dispatch:Dispatch<ActionType>)=>{
 
     try {
@@ -72,12 +62,6 @@ type SimilarsType={
     similars:Array<similarsType>
 }
 export const setSimilars =(similars:Array<similarsType>):SimilarsType=>({type:SIMILARS,similars})
-
-// export const thunkSimilars =(id:any)=>(dispatch:Dispatch<ActionType>)=>{
-//     descriptionAPI.getSimilars(id).then(data=>{
-//         dispatch(setSimilars(data.data))
-//     })
-// }
 
 export const thunkSimilars =(id:any)=> async (dispatch:Dispatch<ActionType>)=>{
     try {

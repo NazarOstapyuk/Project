@@ -34,7 +34,7 @@ export  type detailsType={
 
 
 
- export let initialState = {
+export let initialState = {
     filter:[] as Array<allFilmsType>,
     allFilms:[] as Array<allFilmsType>,
     details:[] as any,
@@ -114,16 +114,6 @@ type SetFilterType ={
 export const setFilter = (term:Array<allFilmsType>):SetFilterType=>({type:FILTER,term})
 
 
-
-// export const thunkAllFilms =(path:string)=>(dispatch:Dispatch<ActionsType>)=>{
-//     dispatch(setIsFetching(true))
-//     filmsAPI.getFilms(path).then(data=>{
-//         dispatch(setIsFetching(false))
-//         dispatch(setAllFilms(data.items))
-//         dispatch(setTotalCount(data.total))
-//     })
-// }
-
 export const thunkAllFilms =(path:string)=> async (dispatch:Dispatch<ActionsType>)=>{
     dispatch(setIsFetching(true))
     try {
@@ -139,15 +129,6 @@ export const thunkAllFilms =(path:string)=> async (dispatch:Dispatch<ActionsType
     }
 
 }
-
-
-// export const thunkDetails =(id:any)=>(dispatch:Dispatch<ActionsType>)=>{
-//     dispatch(setIsFetching(true))
-//     filmsAPI.getDetailsFilms (id).then(data => {
-//         dispatch(setIsFetching(false))
-//         dispatch(setDetails(data))
-//     })}
-
 
 export const thunkDetails =(id:any)=>async (dispatch:Dispatch<ActionsType>)=> {
     dispatch(setIsFetching(true))
